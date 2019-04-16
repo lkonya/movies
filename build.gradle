@@ -8,7 +8,7 @@ plugins {
 }
 
 version "0.1"
-group "movies.kotlin"
+group "movies"
 
 repositories {
     mavenCentral()
@@ -51,7 +51,7 @@ dependencies {
 
 test.classpath += configurations.developmentOnly
 
-mainClassName = "movies.kotlin.Application"
+mainClassName = "movies.Application"
 
 shadowJar {
     mergeServiceFiles()
@@ -67,7 +67,7 @@ task buildZip(type: Zip) {
     }
 }
 
-build.dependsOn buildZip
+shadowJar.dependsOn buildZip
 
 test {
     useJUnitPlatform()
