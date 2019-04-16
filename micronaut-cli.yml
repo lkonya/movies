@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: movies.kotlin
+---
+testFramework: spek
+sourceLanguage: kotlin
