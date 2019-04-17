@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.transformers.Log4j2PluginsCacheFileTransformer
+
 plugins {
     id "io.spring.dependency-management" version "1.0.6.RELEASE"
     id "com.github.johnrengelman.shadow" version "4.0.2"
@@ -38,10 +40,12 @@ dependencies {
     kapt "io.micronaut:micronaut-inject-java"
     kapt "io.micronaut:micronaut-validation"
     kaptTest "io.micronaut:micronaut-inject-java"
-    runtime "org.apache.logging.log4j:log4j-core:2.8.2"
-    runtime "org.apache.logging.log4j:log4j-api:2.8.2"
-    runtime "org.apache.logging.log4j:log4j-slf4j-impl:2.8.2"
-    runtime "com.amazonaws:aws-lambda-java-log4j2:1.1.0"
+
+//    runtime "org.apache.logging.log4j:log4j-slf4j-impl:2.8.2"
+//    runtime "com.amazonaws:aws-lambda-java-log4j2:1.1.0"
+//    compile "org.slf4j:slf4j-simple:1.6.1"
+    compile "io.symphonia:lambda-logging:1.0.3"
+
     runtime "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8"
     testCompile "org.junit.jupiter:junit-jupiter-api"
     testCompile "org.jetbrains.spek:spek-api:1.1.5"
@@ -54,6 +58,7 @@ test.classpath += configurations.developmentOnly
 mainClassName = "movies.Application"
 
 shadowJar {
+//    transform(Log4j2PluginsCacheFileTransformer)
     mergeServiceFiles()
 }
 
