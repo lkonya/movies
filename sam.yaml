@@ -20,6 +20,16 @@ Resources:
           Properties:
             Path: /{proxy+}
             Method: any
+  Table:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      KeySchema:
+        - AttributeName: title
+          KeyType: HASH
+        - AttributeName: releaseYear
+          KeyType: RANGE
+      TableName: movie
 
 Outputs:
   MoviesKotlinApi:
